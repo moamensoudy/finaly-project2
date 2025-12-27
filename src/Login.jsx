@@ -99,7 +99,7 @@ export default function Login() {
             </form></div>
             <div className='image-right'>
            <div className='image-box'>
-                     <InsertPhotoIcon sx={{fontSize:"350px"}} />
+                     <InsertPhotoIcon sx={{fontSize:"290px"}} />
               </div>
                 </div>
                 </div>

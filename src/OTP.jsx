@@ -1,9 +1,10 @@
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import TextField from '@mui/material/TextField';
-import "./Forgetpasswordcss.css";
+import "./OTPcss.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-export default function Login() {
+
+export default function OTB() {
      const [email, setEmail] = useState("");
       
     function handleLogin(e) {
@@ -15,7 +16,7 @@ export default function Login() {
        console.log(email)
    }
    
-
+    
     return (   
         <> 
          <div className='contaner'>    
@@ -36,18 +37,19 @@ export default function Login() {
                 <div className='logcss1'>
         
                             <div className="buttons">
-                <div className='header'><p>   Enter the email to reset your password. </p></div>    
-             <TextField  fullWidth  label="Email" variant="outlined"sx={{marginBottom:"15px"}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                    <div className='header'>
+                                 <p>   Please Enter 5 Digit Code Sent To. </p>
+                                        
+                                    <h3>example@123.gmail.com</h3></div>    
+             <TextField label="" variant="outlined"sx={{marginBottom:"15px"}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                   
-                     
-                    <Link to="OTP">
-            
-                    <button type='submit' disabled={!email}>Send OTP</button>
-                </Link>
+                    <button type='submit' disabled={!email}>Verify</button>
+                
             </div>
                             
-                        </div>
-                         <div className='Signup2'>
+                            </div>
+                          
+                         <div className='Signup3'>
                                 Don't have an account?
                             <Link to="Signup "className='Signup2' >
                                 signup  

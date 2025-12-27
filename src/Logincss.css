@@ -53,7 +53,7 @@
     align-items: center;
     text-align: center;
     font-size: 25px;
-
+    margin-top: 10%;
 }
 
 .headertype h4 {
@@ -67,7 +67,6 @@
     border-radius: 15px;
     padding: 24px;
     box-shadow: 1px 1px 5px 5px #f4eeee;
-    margin: 30px;
     width: 100%;
 }
 
