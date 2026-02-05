@@ -3,12 +3,14 @@ import TextField from '@mui/material/TextField';
 import "./Forgetpasswordcss.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
+    const Navigate = useNavigate();
      const [email, setEmail] = useState("");
       
     function handleLogin(e) {
         e.preventDefault();
-        if (!email ) {
+        if (!email.trim()) {
             alert("please fill all fields")
             return;
         }
@@ -40,16 +42,23 @@ export default function Login() {
              <TextField  fullWidth  label="Email" variant="outlined"sx={{marginBottom:"15px"}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                   
                      
-                    <Link to="OTP">
+                    
             
-                    <button type='submit' disabled={!email}>Send OTP</button>
-                </Link>
+                    <button type='button' disabled={!email} onClick={()=>{ if (!email.trim()) {
+          
+                                        alert("please fill all fields")
+           
+                                        return;
+                                    }
+                                        Navigate("/OTP")
+                                    }}>Send OTP</button>
+                
             </div>
                             
                         </div>
                          <div className='Signup2'>
                                 Don't have an account?
-                            <Link to="Signup "className='Signup2' >
+                            <Link to="Signup" className='Signup2' >
                                 signup  
                             </Link></div>
                         </form></div>
