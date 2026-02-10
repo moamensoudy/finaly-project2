@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function OTP() {
+
   const [otp, setOtp] = useState(Array(6).fill(""));
 
   const handleChange = (value, index) => {
@@ -37,20 +38,20 @@ export default function OTP() {
 
   return (
     <>
-      <div className="contaner1">
-        <div className="headertype1">
+      <div className="contaner30">
+        <div className="headertype30">
           <h3>LOGO</h3>
           <h1>Welcome TO ZUMRA!</h1>
           <h4>Please Reset your password</h4>
         </div>
 
-        <div className="login-contaner1">
-          <div className="box-left1">
-            <form className="alltext1" onSubmit={handleLogin}>
-              <div className="logcss1 buttons">
-                <div className="header">
-                  <p>Please Enter 5 Digit Code Sent To</p>
-                  <h3>example@123.gmail.com</h3>
+        <div className="login-contaner30">
+          <div className="box-left30">
+            <form className="alltext30" onSubmit={handleLogin}>
+              <div className="logcss30">
+                <div className="buttons30">
+                <div className="header30">  <p>Please Enter 5 Digit Code Sent To</p>
+                  <h3>example@123.gmail.com</h3></div>
                 </div>
 
             
@@ -73,21 +74,21 @@ export default function OTP() {
                   ))}
                 </div>
                 <Link to="/Resetpassword">
-                  <button type="submit">Verify</button>
+                  <button   >verify</button>
                   </Link>
               </div>
 
-              <div className="Signup3">
+              <div className="Signup30">
                 Don't have an account?
-                <Link to="/Signup" className="Signup2">
+                <Link to="/Signup" className="Signup30">
                   signup
                 </Link>
               </div>
             </form>
           </div>
 
-          <div className="image-right1">
-            <div className="image-box">
+          <div className="image-right30">
+            <div className="image-box30">
               <InsertPhotoIcon
                 sx={{ fontSize: "280px" }}
               />

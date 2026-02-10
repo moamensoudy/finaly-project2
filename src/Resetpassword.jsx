@@ -47,7 +47,7 @@ export default function Resetpassword() {
                                         
                             <div className='Signup1'>
                                 Don't have an account?
-                            <Link to="./Signup" className='Signup' >
+                            <Link to="/Signup" className='Signup' >
                                 signup  
                             </Link></div>
                 </div>

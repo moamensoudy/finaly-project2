@@ -246,3 +246,27 @@ hr::after {
     position: relative;
     top: -12px;
 }
+
+@media(max-width: 768px) {
+    .login-contaner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .alltext {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .image-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .headertype {
+        margin-top: 20px;
+        margin-bottom: 200px;
+    }
+
+}

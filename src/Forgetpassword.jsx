@@ -4,7 +4,7 @@ import "./Forgetpasswordcss.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-export default function Login() {
+export default function Forgetpassword() {
     const Navigate = useNavigate();
      const [email, setEmail] = useState("");
       
@@ -20,31 +20,31 @@ export default function Login() {
 
     return (   
         <> 
-         <div className='contaner'>    
-           <div className='headertype1'>
+         <div className='allcontaner20'>    
+           <div className='headertype20'>
                 <h3>
                     LOGO
                 </h3>
                 <h1>Welcome TO ZUMRA! </h1>
                 <h4>Please Reset your password</h4>
                 </div>
-           <div className='login-contaner1'>
+           <div className='contaner20'>
                 
-                <div className='box-left1'>
-                    <form className='alltext1' onSubmit={handleLogin}>
+                <div className='box-left20'>
+                    <form className='alltext20' onSubmit={handleLogin}>
                 
             
 
-                <div className='logcss1'>
+                <div className='logcss20'>
         
-                            <div className="buttons">
-                <div className='header'><p>   Enter the email to reset your password. </p></div>    
+                            <div className="buttons20">
+                <div className='header20'><p>   Enter the email to reset your password. </p></div>    
              <TextField  fullWidth  label="Email" variant="outlined"sx={{marginBottom:"15px"}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                   
                      
                     
             
-                    <button type='button' disabled={!email} onClick={()=>{ if (!email.trim()) {
+                    <button type='button1' disabled={!email} onClick={()=>{ if (!email.trim()) {
           
                                         alert("please fill all fields")
            
@@ -56,15 +56,15 @@ export default function Login() {
             </div>
                             
                         </div>
-                         <div className='Signup2'>
+                         <div className='Signup20'>
                                 Don't have an account?
-                            <Link to="Signup" className='Signup2' >
+                            <Link to="Signup" className='Signup20' >
                                 signup  
                             </Link></div>
                         </form></div>
                     
-            <div className='image-right1'>
-           <div className='image-box1'>
+            <div className='image-right20'>
+           <div className='image-box20'>
                      <InsertPhotoIcon sx={{fontSize:"280px",margin:"30%"}} />
               </div>
                 </div>

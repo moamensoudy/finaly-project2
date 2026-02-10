@@ -2,65 +2,95 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
-.contaner1 {
+.login-contaner30 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+
+}
+
+.alltext30 {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-.login-contaner1 {
-    display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.alltext1 {
-    width: 500px;
-}
-
-.box-left1 {
-    display: flex;
-    justify-content: center;
-}
-
-.image-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.header p {
-    color: #555;
-}
-
-.headertype1 {
     text-align: center;
-    margin: 40px 0;
+    height: 100vh;
+    width: 500px;
+
+
 }
 
-.logcss1 {
-    background-color: #fff;
+.box-left30 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-right30 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-box30 {
+    width: 400px;
+    height: 300px;
+}
+
+.headertype30 {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10%;
+}
+
+.headertype30 h4 {
+    color: #555;
+    font-size: 20px;
+}
+
+.logcss30 {
+    font-family: sans-serif;
+    background-color: #FFFFFF1A;
     border-radius: 15px;
     padding: 24px;
-    box-shadow: 0 0 10px #eee;
+    box-shadow: 1px 1px 5px 5px #f4eeee;
+    width: 100%;
 }
 
-.buttons button {
+.buttons30 {
+    margin: 5px;
+}
+
+.logcss30 button {
+
+    font-size: x-large;
     width: 100%;
     height: 50px;
-    background: black;
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #000000;
     color: white;
-    border: none;
+    border: 0px;
     border-radius: 15px;
-    font-size: 18px;
+    transition: 0.3s;
+}
+
+.buttons30 button:disabled {
+    pointer-events: none;
+    opacity: 0.60;
 }
 
 .otp-container {
@@ -77,4 +107,32 @@
     font-size: 20px;
     border-radius: 8px;
     border: 1px solid #ccc;
+}
+
+.Signup30 {
+    margin: 10px;
+}
+
+.Signup30 {
+    color: #0a0808;
+    text-decoration: underline;
+    margin: 5px;
+}
+
+@media(max-width: 768px) {
+    .login-contaner30 {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .alltext30 {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .image-box30 {
+        width: 100%;
+        height: auto;
+    }
 }

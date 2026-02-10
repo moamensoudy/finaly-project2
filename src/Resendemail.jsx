@@ -20,25 +20,22 @@ export default function Login() {
 
     return (   
         <> 
-         <div className='contaner'>    
-           <div className='headertype1'>
+         <div className='contaner2'>    
+           <div className='headertype10'>
                 <h3>
                     LOGO
                 </h3>
                 <h1>Welcome TO ZUMRA! </h1>
                 <h4>Please Reset your password</h4>
                 </div>
-           <div className='login-contaner1'>
+           <div className='login-contaner0'>
                 
-                <div className='box-left1'>
-                    <form className='alltext1' onSubmit={handleLogin}>
-                
-            
-
-                <div className='logcss1'>
+                <div className='box-left10'>
+                    <form className='alltext10' onSubmit={handleLogin}>
+                <div className='logcss10'>
         
-                            <div className="buttons">
-                <div className='header'><p> Send email confirmation </p></div>    
+                            <div className="buttons10">
+                <div className='header10'><p> Send email confirmation </p></div>    
              <TextField  fullWidth  label="Email" variant="outlined"sx={{marginBottom:"15px"}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                   
                      
@@ -56,16 +53,16 @@ export default function Login() {
             </div>
                             
                         </div>
-                         <div className='Signup2'>
+                         <div className='Signup10'>
                                 Don't have an account?
-                            <Link to="Signup" className='Signup2' >
+                            <Link to="/Signup" className='Signup10' >
                                 signup  
                             </Link></div>
                         </form></div>
                     
-            <div className='image-right1'>
-           <div className='image-box1'>
-                     <InsertPhotoIcon sx={{fontSize:"280px",margin:"30%"}} />
+            <div className='image-right10'>
+           <div className='image-box10'>
+                     <InsertPhotoIcon sx={{fontSize:"280px",margin:"40%"}} />
               </div>
                 </div>
                 </div>

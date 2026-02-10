@@ -5,7 +5,7 @@
 
 }
 
-.contaner {
+.contaner2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +15,7 @@
 
 }
 
-.login-contaner1 {
+.login-contaner0 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,29 +23,35 @@
 
 }
 
-.alltext1 {
+.alltext10 {
 
     width: 500px;
 
 }
 
-.box-left1 {
+.image-right10 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 170px;
+}
+
+.box-left10 {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-
-
-.image-box {
+.image-box10 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.headertype1 {
+.headertype10 {
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
@@ -56,12 +62,12 @@
     margin-top: 20%;
 }
 
-.headertype1 h4 {
+.headertype10 h4 {
     color: #555;
     font-size: 20px;
 }
 
-.logcss1 {
+.logcss10 {
     font-family: sans-serif;
     background-color: #FFFFFF1A;
     border-radius: 15px;
@@ -72,7 +78,7 @@
 }
 
 
-.buttons button {
+.buttons10 button {
 
     font-size: x-large;
     width: 100%;
@@ -86,12 +92,12 @@
     transition: 0.3s;
 }
 
-.buttons button:disabled {
+.buttons10 button:disabled {
     pointer-events: none;
     opacity: 0.60;
 }
 
-.header {
+.header10 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -100,9 +106,33 @@
 }
 
 
-.Signup2 {
+.Signup10 {
     font-family: sans-serif;
     color: #0a0808;
 
     margin: 5px;
+}
+
+@media(max-width: 768px) {
+    .login-contaner0 {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .alltext10 {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .image-box10 {
+        width: 100%;
+        height: 200px;
+        margin: 20px 0;
+    }
+
+    .image-right10 {
+        margin: 20px 0;
+    }
 }
