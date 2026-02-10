@@ -1,9 +1,8 @@
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import TextField from '@mui/material/TextField';
-import "./Logincss.css";
+import "./Resetpassword.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 export default function Resetpassword() {
      const [password, setPassword] = useState("");
     const [resetpassword, setresetpassword] = useState("");
@@ -40,7 +39,7 @@ export default function Resetpassword() {
                                 
                      <TextField fullWidth type="passwoed" value={password} onChange={(e)=>setPassword(e.target.value)} sx={{marginBottom:"15px"}} label="password" variant="outlined"  />
                     <TextField fullWidth type="confirmpasswoed" value={resetpassword} onChange={(e)=>setresetpassword(e.target.value)}  label="confirmpassword" variant="outlined"  />
-                                <Link to="/Login">
+                                <Link to="/">
                                     <button type='submit' disabled={!resetpassword || !password}>Resetpassword</button>
                                     </Link>
  
@@ -48,7 +47,7 @@ export default function Resetpassword() {
                                         
                             <div className='Signup1'>
                                 Don't have an account?
-                            <Link to="Signup" className='Signup' >
+                            <Link to="./Signup" className='Signup' >
                                 signup  
                             </Link></div>
                 </div>

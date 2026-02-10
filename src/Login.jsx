@@ -55,7 +55,7 @@ export default function Login() {
                       <div className='mylink'>  <Link to="/Forgetpassword" className='Links'>
                                 Forgetpassword ?
                             </Link> 
-                            <Link to="/Forgetpassword" className='Links'>
+                            <Link to="/Resendemail" className='Links'>
                                 Resend email confirmation
                                         </Link>
                                     </div>

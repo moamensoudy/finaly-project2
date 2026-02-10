@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function OTP() {
-  const [otp, setOtp] = useState(Array(5).fill(""));
+  const [otp, setOtp] = useState(Array(6).fill(""));
 
   const handleChange = (value, index) => {
     if (!/^[0-9]?$/.test(value)) return;
