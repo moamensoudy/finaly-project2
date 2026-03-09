@@ -5,22 +5,73 @@ import TextField from '@mui/material/TextField';
 import "./Logincss.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { login } from '../services/Api';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
     const [checkbox, setCheckbox] = useState(false);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-      function handleCheckbox(e) {
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+    
+    async function handleCheckbox(e) {
         setCheckbox(e.target.checked)
     }
-    function handleLogin(e) {
+    
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    async function handleLogin(e) {
         e.preventDefault();
-        if (!email || !password) {
-            alert("please fill all fields")
+    
+        const trimmedEmail = email.trim();
+        const trimmedPassword = password.trim();
+        
+       
+        if (!trimmedEmail || !trimmedPassword) {
+            alert("الرجاء ملء جميع الحقول");
             return;
         }
-       console.log(email,password,checkbox)
-   }
+        
+        if (!validateEmail(trimmedEmail)) {
+            alert("الرجاء إدخال بريد إلكتروني صحيح");
+            return;
+        }
+        
+        if (trimmedPassword.length < 3) {
+            alert("كلمة المرور يجب أن تكون 3 أحرف على الأقل");
+            return;
+        }
+        
+        setIsLoading(true);
+        
+        try {
+            const data = await login({
+                userName: trimmedEmail,
+                password: trimmedPassword,
+                rememberMe: checkbox
+            });
+            
+            const token =
+                data?.token ??
+                data?.accessToken ??
+                data?.jwt ??
+                data?.data?.token ??
+                data?.data?.accessToken;
+                
+           
+            localStorage.setItem("token", token);
+            alert("تم تسجيل الدخول بنجاح");
+            navigate("/pages1");
+        } catch (error) {
+            console.error("Login error:", error);
+            alert(error.message || "حدث خطأ أثناء تسجيل الدخول");
+        } finally {
+            setIsLoading(false);
+        }
+    }
    
     
     return (   
@@ -62,8 +113,10 @@ export default function Login() {
                             
                         </div>
                         
-            
-                    <button type='submit' disabled={!email || !password}>Login</button>
+                                
+                    <button type='submit' disabled={!email.trim() || !password.trim() || isLoading}>
+                        {isLoading ? "جاري تسجيل الدخول..." : "Login"}
+                    </button>
                     <hr />
                 
             </div>

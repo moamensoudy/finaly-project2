@@ -4,18 +4,48 @@ import "./Forgetpasswordcss.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { forgotPassword } from '../services/Api';
+
 export default function Forgetpassword() {
     const Navigate = useNavigate();
-     const [email, setEmail] = useState("");
-      
-    function handleLogin(e) {
+    const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    async function handleForgotPassword(e) {
         e.preventDefault();
-        if (!email.trim()) {
-            alert("please fill all fields")
+        
+        const trimmedEmail = email.trim();
+        
+        if (!trimmedEmail) {
+            alert("الرجاء إدخال البريد الإلكتروني");
             return;
         }
-       console.log(email)
-   }
+        
+        if (!validateEmail(trimmedEmail)) {
+            alert("الرجاء إدخال بريد إلكتروني صحيح");
+            return;
+        }
+        
+        setIsLoading(true);
+        
+        try {
+            const data = await forgotPassword(trimmedEmail);
+            alert("تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني");
+            // خزّن الإيميل علشان صفحة OTP تعرف تبعت VerifyOTP
+            localStorage.setItem("reset_email", trimmedEmail);
+            Navigate("/OTP", { state: { email: trimmedEmail } });
+        } catch (error) {
+            console.error("Forgot password error:", error);
+            alert(error.message || "حدث خطأ أثناء إرسال الطلب");
+        } finally {
+            setIsLoading(false);
+        }
+    }
    
 
     return (   
@@ -31,7 +61,7 @@ export default function Forgetpassword() {
            <div className='contaner20'>
                 
                 <div className='box-left20'>
-                    <form className='alltext20' onSubmit={handleLogin}>
+                    <form className='alltext20' onSubmit={handleForgotPassword}>
                 
             
 
@@ -43,22 +73,17 @@ export default function Forgetpassword() {
                   
                      
                     
-            
-                    <button type='button1' disabled={!email} onClick={()=>{ if (!email.trim()) {
-          
-                                        alert("please fill all fields")
-           
-                                        return;
-                                    }
-                                        Navigate("/OTP")
-                                    }}>Send OTP</button>
+             
+                    <button type='submit' disabled={!email.trim() || isLoading}>
+                        {isLoading ? "جاري الإرسال..." : "Send OTP"}
+                    </button>
                 
             </div>
                             
                         </div>
                          <div className='Signup20'>
                                 Don't have an account?
-                            <Link to="Signup" className='Signup20' >
+                            <Link to="/Signup" className='Signup20' >
                                 signup  
                             </Link></div>
                         </form></div>

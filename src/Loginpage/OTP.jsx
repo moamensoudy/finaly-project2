@@ -1,11 +1,17 @@
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import "./OTPcss.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { verifyOTP } from "../services/Api";
 
 export default function OTP() {
-
   const [otp, setOtp] = useState(Array(6).fill(""));
+  const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const emailFromState = location.state?.email;
+  const emailFromStorage = localStorage.getItem("reset_email");
+  const email = (emailFromState || emailFromStorage || "").trim();
 
   const handleChange = (value, index) => {
     if (!/^[0-9]?$/.test(value)) return;
@@ -25,7 +31,7 @@ export default function OTP() {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleVerify = async (e) => {
     e.preventDefault();
 
     if (otp.includes("")) {
@@ -33,7 +39,22 @@ export default function OTP() {
       return;
     }
 
-    console.log("OTP Code:", otp.join(""));
+    const otpCode = otp.join("");
+    if (!email) {
+      alert("البريد الإلكتروني غير موجود. ارجع لصفحة Forget Password وأعد إرسال OTP.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await verifyOTP({ email, otp: otpCode });
+      alert("تم التحقق من OTP بنجاح");
+      navigate("/Resetpassword");
+    } catch (error) {
+      alert(error.message || "حدث خطأ أثناء التحقق من OTP");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -47,11 +68,13 @@ export default function OTP() {
 
         <div className="login-contaner30">
           <div className="box-left30">
-            <form className="alltext30" onSubmit={handleLogin}>
+            <form className="alltext30" onSubmit={handleVerify}>
               <div className="logcss30">
                 <div className="buttons30">
-                <div className="header30">  <p>Please Enter 5 Digit Code Sent To</p>
-                  <h3>example@123.gmail.com</h3></div>
+                  <div className="header30">
+                    <p>Please Enter 6 Digit Code Sent To</p>
+                    <h3>{email || "your email"}</h3>
+                  </div>
                 </div>
 
             
@@ -73,9 +96,9 @@ export default function OTP() {
                     />
                   ))}
                 </div>
-                <Link to="/Resetpassword">
-                  <button   >verify</button>
-                  </Link>
+                <button type="submit" disabled={isLoading}>
+                  {isLoading ? "verifying..." : "verify"}
+                </button>
               </div>
 
               <div className="Signup30">

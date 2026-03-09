@@ -2,20 +2,44 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import TextField from '@mui/material/TextField';
 import "./Resendemail.css";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-export default function Login() {
+import { Link, useNavigate } from 'react-router-dom';
+import { resendConfirmEmail } from '../services/Api';
+
+export default function Resendemail() {
     const Navigate = useNavigate();
-     const [email, setEmail] = useState("");
-      
-    function handleLogin(e) {
+    const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    function validateEmail(value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(value);
+    }
+
+    async function handleResend(e) {
         e.preventDefault();
-        if (!email.trim()) {
-            alert("please fill all fields")
+        const trimmedEmail = email.trim();
+
+        if (!trimmedEmail) {
+            alert("الرجاء إدخال البريد الإلكتروني");
             return;
         }
-       console.log(email)
-   }
+
+        if (!validateEmail(trimmedEmail)) {
+            alert("الرجاء إدخال بريد إلكتروني صحيح");
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            await resendConfirmEmail(trimmedEmail);
+            alert("تم إرسال بريد تأكيد جديد إلى بريدك الإلكتروني");
+            Navigate("/");
+        } catch (error) {
+            alert(error.message || "حدث خطأ أثناء إرسال البريد");
+        } finally {
+            setIsLoading(false);
+        }
+    }
    
 
     return (   
@@ -31,7 +55,7 @@ export default function Login() {
            <div className='login-contaner0'>
                 
                 <div className='box-left10'>
-                    <form className='alltext10' onSubmit={handleLogin}>
+                    <form className='alltext10' onSubmit={handleResend}>
                 <div className='logcss10'>
         
                             <div className="buttons10">
@@ -41,14 +65,9 @@ export default function Login() {
                      
                     
             
-                    <button type='button' disabled={!email} onClick={()=>{ if (!email.trim()) {
-          
-                                        alert("please fill all fields")
-           
-                                        return;
-                                    }
-                                        Navigate("/")
-                                    }}>Send</button>
+                    <button type='submit' disabled={!email.trim() || isLoading}>
+                        {isLoading ? "جاري الإرسال..." : "Send"}
+                    </button>
                 
             </div>
                             

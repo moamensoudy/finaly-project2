@@ -1,11 +1,15 @@
 
 import { Routes, Route } from "react-router-dom";
-import Login from "./Login"
-import Forgetpassword from "./Forgetpassword";
-import Signup from "./Signup";
-import OTP from "./OTP";
-import Resetpassword from "./Resetpassword";
-import Resendemail  from "./Resendemail"
+import Login from "./Loginpage/Login"
+import Forgetpassword from "./Loginpage/Forgetpassword";
+import Signup from "./Loginpage/Signup";
+import OTP from "./Loginpage/OTP";
+import Resetpassword from "./Loginpage/Resetpassword";
+import Resendemail from "./Loginpage/Resendemail"
+import Confirm from "./Loginpage/Confirm";
+import Pages1 from "./viewpages/Pages1";
+import Favoritepage from "./viewpages/Favoritepage";
+import Navbar from "./viewpages/Navbar";
 export default function App() {
     return (
         <Routes>
@@ -16,6 +20,12 @@ export default function App() {
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Resetpassword" element={<Resetpassword />} />
             <Route path="/Resendemail" element={<Resendemail />} />
+            <Route path="/Confirm" element={<Confirm />} />
+          < Route 
+                path="/pages1" 
+                element={<><Navbar /><Pages1 /></>} 
+            />
+            <Route path="/Favoritepage" element={<><Navbar /><Favoritepage /></>} />   
               </Routes>
        )
 }
